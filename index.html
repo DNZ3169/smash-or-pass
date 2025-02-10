@@ -1,8 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smash or Pass</title>
   <style>
     body {
@@ -70,9 +80,18 @@
       opacity: 1;
     }
     @keyframes effectAnimation {
-      0% { transform: scale(1) translateY(0); opacity: 1; }
-      50% { transform: scale(1.5) translateY(-30px); opacity: 0.8; }
-      100% { transform: scale(2) translateY(-60px); opacity: 0; }
+      0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5) translateY(-30px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(2) translateY(-60px);
+        opacity: 0;
+      }
     }
     /* End screen overlay styles */
     .end-screen {
@@ -161,15 +180,41 @@
     const endScreen = document.getElementById("endScreen");
     const finalStats = document.getElementById("finalStats");
     const restartBtn = document.getElementById("restartBtn");
-    
-    let names = ["Louise BUCHET", "Mélissa", "Lucie DOURVER", "Éléonore DUHART", "Sophia", "Zoé", "Gabriela JOUIS", "Gabrielle LANHER", "Ava LAUGIER", "Daphné", "Eva NDIAYE", "Éléonora ORSO", "Mathilde", "Maria Chiara", "Charlie", "Joanna", "Yael", "Leyli ASDAGHI", "Inès", "Sara", "Selene", "Emilie CARRERE", "Naomi", "Anna Chouraqui", "Ava Fleury", "Maud", "Maliha", "Anna Laflaquiere", "Sarah", "Alix", "Kheira BAGUI", "Elena BONIN", "Zoe BOURISSAUX", "Camille", "Lisa CARRERE", "Isabella", "Gabrielle Haller", "Eleanor HASCOET", "Audrey", "Marina MANIDINHARAT", "Margaux", "Constance", "Liana", "Giulia", "Sana SEOUDI", "Léna WOLKO", "Irene", "Anyssa", "Anaïs", "Elia BRONNER", "Chloé Costa", "Alma CRAEN", "Charlotte DAYEN", "Micha", "Sarah Heller", "Ada", "Rei", "June JARMOUNE", "Elizaveta LARCEVA", "Judith MENNESSON", "Chiara NUCCI", "Taiss", "Aline", "Gabrielle Rayna", "Ylianna", "Asrin", "Cybelle", "Chloé THIRION", "Dune", "Nelly", "Sima", "Maya", "Romy de la hess", "Charmaine", "Antonio", "Tess-Ever", "Camille Muzard", "Aditi", "Hannah", "Clarisse", "Flora", "Sydney", "Aja", "Lahna AMMOUR", "Kyra", "Alice BENDAHAN", "Lina BEN", "Rose", "Elise", "Emma Faldi", "Jasmine", "Romy EL KOBBY", "Cassia", "Elsa LELOUCHE", "Camille POURQUE", "Sirine", "Leah sorel", "Emma SRAER", "Lola TUKHTABAYEVA", "Ece", "Asline", "Chloé Benzekri", "Juliette", "Sakura", "Elie", "Luna mia", "Anna Lefebvre", "Stella", "Roxane", "Éléonore", "Artemise", "Raphaële Sorel", "Eugenie", "Ella", "Judith Zhang", "Lorraine", "Giorgia DEL GOBBO", "Alice DI RITO", "Electra", "Valentine", "Ciara Prioux", "Sarah Sarhdaqui"];
-    
+
+    // List of names for the game
+    let names = [
+      "Louise BUCHET", "Mélissa", "Lucie DOURVER", "Éléonore DUHART",
+      "Sophia", "Zoé", "Gabriela JOUIS", "Gabrielle LANHER", "Ava LAUGIER",
+      "Daphné", "Eva NDIAYE", "Éléonora ORSO", "Mathilde", "Maria Chiara",
+      "Charlie", "Joanna", "Yael", "Leyli ASDAGHI", "Inès", "Sara", "Selene",
+      "Emilie CARRERE", "Naomi", "Anna Chouraqui", "Ava Fleury", "Maud",
+      "Maliha", "Anna Laflaquiere", "Sarah", "Alix", "Kheira BAGUI",
+      "Elena BONIN", "Zoe BOURISSAUX", "Camille", "Lisa CARRERE",
+      "Isabella", "Gabrielle Haller", "Eleanor HASCOET", "Audrey",
+      "Marina MANIDINHARAT", "Margaux", "Constance", "Liana", "Giulia",
+      "Sana SEOUDI", "Léna WOLKO", "Irene", "Anyssa", "Anaïs", "Elia BRONNER",
+      "Chloé Costa", "Alma CRAEN", "Charlotte DAYEN", "Micha", "Sarah Heller",
+      "Ada", "Rei", "June JARMOUNE", "Elizaveta LARCEVA", "Judith MENNESSON",
+      "Chiara NUCCI", "Taiss", "Aline", "Gabrielle Rayna", "Ylianna", "Asrin",
+      "Cybelle", "Chloé THIRION", "Dune", "Nelly", "Sima", "Maya",
+      "Romy de la hess", "Charmaine", "Antonio", "Tess-Ever", "Camille Muzard",
+      "Aditi", "Hannah", "Clarisse", "Flora", "Sydney", "Aja", "Lahna AMMOUR",
+      "Kyra", "Alice BENDAHAN", "Lina BEN", "Rose", "Elise", "Emma Faldi",
+      "Jasmine", "Romy EL KOBBY", "Cassia", "Elsa LELOUCHE", "Camille POURQUE",
+      "Sirine", "Leah sorel", "Emma SRAER", "Lola TUKHTABAYEVA", "Ece",
+      "Asline", "Chloé Benzekri", "Juliette", "Sakura", "Elie", "Luna mia",
+      "Anna Lefebvre", "Stella", "Roxane", "Éléonore", "Artemise", "Raphaële Sorel",
+      "Eugenie", "Ella", "Judith Zhang", "Lorraine", "Giorgia DEL GOBBO",
+      "Alice DI RITO", "Electra", "Valentine", "Ciara Prioux", "Sarah Sarhdaqui"
+    ];
+
     let currentNames = [];
     let smashCount = 0;
     let passCount = 0;
     let smashList = [];
     let passList = [];
-    
+
+    // Creates visual effects for each action.
     function createEffect(type) {
       for (let i = 0; i < 100; i++) {
         const effect = document.createElement("div");
@@ -182,27 +227,27 @@
         setTimeout(() => effect.remove(), 2000);
       }
     }
-    
+
+    // Starts or restarts the game by resetting state and displays.
     function startGame() {
-      // Shuffle names and reset counters/lists
       currentNames = [...names].sort(() => Math.random() - 0.5);
       smashCount = 0;
       passCount = 0;
       smashList = [];
       passList = [];
-      
-      // Reset displays
+
       gameDiv.style.display = "block";
       scoreboard.style.display = "flex";
       endScreen.style.display = "none";
       nameDisplay.style.display = "block";
       startBtn.style.display = "none";
       document.querySelectorAll(".buttons button").forEach(btn => btn.style.display = "inline-block");
-      
+
       updateScore();
       nextName();
     }
-    
+
+    // Advances to the next name or shows stats if no names remain.
     function nextName() {
       if (currentNames.length === 0) {
         showStats();
@@ -218,7 +263,8 @@
         }
       }, 1000);
     }
-    
+
+    // Handles the Smash action.
     function smashAction() {
       if (currentNames.length === 0) return;
       smashCount++;
@@ -227,7 +273,8 @@
       createEffect("flame");
       nextName();
     }
-    
+
+    // Handles the Pass action.
     function passAction() {
       if (currentNames.length === 0) return;
       passCount++;
@@ -236,30 +283,37 @@
       createEffect("passEffect");
       nextName();
     }
-    
+
+    // Updates the scoreboard.
     function updateScore() {
       smashCounter.innerText = `🔥 Smash: ${smashCount}`;
       passCounter.innerText = `❌ Pass: ${passCount}`;
     }
-    
+
+    // Hides game elements and shows the end screen overlay with stats.
     function showStats() {
       gameDiv.style.display = "none";
       scoreboard.style.display = "none";
-      
+
       let statsHTML = `<h2>Final Score</h2>`;
       statsHTML += `<h3>🔥 Smash: ${smashCount}</h3>`;
       statsHTML += `<h3>❌ Pass: ${passCount}</h3>`;
       statsHTML += `<h3>🔥 Smash List:</h3><ul>${smashList.map(name => `<li>${name}</li>`).join('')}</ul>`;
       statsHTML += `<h3>❌ Pass List:</h3><ul>${passList.map(name => `<li>${name}</li>`).join('')}</ul>`;
       finalStats.innerHTML = statsHTML;
-      
+
       endScreen.style.display = "flex";
     }
-    
+
+    // Event listeners for the buttons.
     smashBtn.addEventListener("click", smashAction);
     passBtn.addEventListener("click", passAction);
     startBtn.addEventListener("click", startGame);
     restartBtn.addEventListener("click", startGame);
   </script>
+</body>
+</html>
+<!-- partial -->
+  
 </body>
 </html>
